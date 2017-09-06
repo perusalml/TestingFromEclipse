@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="wapl-phd-data-streaming-dev"
+		module="wapl-phd-data-streaming-dev_2.11"
+		revision="20"
+		status="integration"
+		publication="20170904153641"
+	>
+		<description>
+		WAPL-PHD-Data-Streaming-DEV
+		</description>
+	</info>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		<conf name="compile-internal" visibility="private" description="" extends="compile,optional,provided"/>
+		<conf name="runtime-internal" visibility="private" description="" extends="runtime,optional"/>
+		<conf name="test-internal" visibility="private" description="" extends="test,optional,provided"/>
+		<conf name="plugin" visibility="private" description=""/>
+		<conf name="sources" visibility="public" description=""/>
+		<conf name="docs" visibility="public" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		<conf name="scala-tool" visibility="private" description=""/>
+	</configurations>
+	<publications>
+		<artifact name="wapl-phd-data-streaming-dev_2.11" type="pom" ext="pom" conf="pom"/>
+		<artifact name="wapl-phd-data-streaming-dev_2.11" type="jar" ext="jar" conf="compile"/>
+		<artifact name="wapl-phd-data-streaming-dev_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		<artifact name="wapl-phd-data-streaming-dev_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.1.0" conf="provided->default(compile)">
+			<exclude org="org.slf4j" module="slf4j-log4j12" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.apache.spark" name="spark-streaming_2.11" rev="2.1.0" conf="provided->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.1.0" conf="provided->default(compile)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.6.1" conf="compile->default(compile)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.6.1" conf="compile->default(compile)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-slf4j-impl" rev="2.6.1" conf="compile->default(compile)"/>
+		<dependency org="com.databricks" name="spark-xml_2.11" rev="0.4.1" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-hive_2.11" rev="2.1.0" conf="provided->default(compile)"/>
+	</dependencies>
+</ivy-module>
